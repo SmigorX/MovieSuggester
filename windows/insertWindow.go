@@ -3,12 +3,16 @@ package windows
 import (
     //"log"
     "fyne.io/fyne/v2/widget"
+    "fyne.io/fyne/v2/container"
     "fyne.io/fyne/v2"
 )
 
-func InsertWindow(window fyne.Window) fyne.CanvasObject {
+func (w *Window)insertWindow() *fyne.Container { 
     button := widget.NewButton("Click Me", func() {
-       window.SetContent(MainWindow(window)) 
+       w.SetMainWindow()
     })
-    return button
+
+    container := container.NewPadded(button)
+
+    return container
 }

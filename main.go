@@ -1,11 +1,10 @@
 package main
 
 import (
-	"context"
+	//"context"
 	"log"
 	"os"
 
-	"fyne.io/fyne/v2/app"
 
 	"github.com/SmigorX/MovieSuggester/windows"
 
@@ -13,7 +12,7 @@ import (
 )    
 
 
-func database() db.DB {
+func database() *db.DB {
     db_address := os.Getenv("MoviePSQL")
     
     if (db_address == "") {log.Fatal("No db address env var")}
@@ -25,12 +24,9 @@ func database() db.DB {
 
 func main() {
     db := database() 
-    if db.Pool!=nil {}
+    if db.Pool==nil {log.Print("No pool")}
 
-    var myApp = app.New()    
-    var myWindow = myApp.NewWindow("Movie Suggester")
-
-    myWindow.SetContent(windows.MainWindow(myWindow))
-    myWindow.ShowAndRun()
+    window := windows.New(db)
+    window.Window.ShowAndRun()
 }
 

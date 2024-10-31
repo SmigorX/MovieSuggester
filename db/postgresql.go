@@ -17,7 +17,6 @@ func NewPostgresPool(connStr string) *pgxpool.Pool {
 	if err != nil {
 		log.Fatalf("ERROR whilst connecting to the pool, %v", err)
 	}
-    defer pool.Close()
 
 	log.Println("Connected to the database.")
 	return pool
