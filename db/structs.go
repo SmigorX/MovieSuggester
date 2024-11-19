@@ -9,3 +9,13 @@ type Movie struct {
     Watched     bool
 }
 
+func NewMovie(name string, director string, year int, tags []string, watched bool) *Movie {
+    return &Movie{
+        Id: 0,
+        Name: name,
+        Director: director,
+        Year: year,
+        Tags: tags,
+        Watched: watched,
+    }
+}

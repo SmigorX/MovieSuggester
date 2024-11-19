@@ -68,17 +68,22 @@ func (db *DB) ChangeWatched(movie Movie) error {
 
 //AddMovie adds new entry to the movie db
 func (db *DB) AddMovie(movie Movie) error {
-    err := db.Pool.QueryRow(
+    row := db.Pool.QueryRow(
         db.Ctx, 
         `INSERT INTO movies (name, director, watched, year, tags) 
         VALUES ($1, $2, $3, $4, $5)`,
         movie.Name, movie.Director, movie.Watched, movie.Year, movie.Tags,
     )
 
-    if err != nil {
+
+    // Check if the row was successfully returned, or if an error occurred
+    err := row.Scan() // Scan the returned row (if the query was successful)
+    if err != nil && err != pgx.ErrNoRows {
         log.Printf("AddMovie failed, %v", err)
-        return err.Scan()
+        return err
     }
+
+    // No need for err.Scan() here since it's not applicable with pgx
     return nil
 }
 

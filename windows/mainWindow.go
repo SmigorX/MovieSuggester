@@ -34,8 +34,6 @@ func (w *Window)mainWindow() *fyne.Container {
         },
     )
 
-    
-
     buttonAddWindow := widget.NewButton("Add new movie", func() {
        w.SetInsertWindow()
     })

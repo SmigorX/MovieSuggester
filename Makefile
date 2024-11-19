@@ -1,8 +1,7 @@
 all: run
 
 run:	
-	. ./db/.env
-	go build
+	go build -v
 	./MovieSuggester
 
 

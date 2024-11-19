@@ -5,6 +5,7 @@ go 1.23.0
 require (
 	fyne.io/fyne/v2 v2.5.2
 	github.com/jackc/pgx/v4 v4.18.3
+	github.com/spf13/cast v1.3.1
 )
 
 require (

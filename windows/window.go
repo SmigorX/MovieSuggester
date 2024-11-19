@@ -24,7 +24,7 @@ func (w *Window) SetExportsWindow() {
 }
 
 func New(db *db.DB) *Window {
-    myApp := app.New()
+    myApp := app.NewWithID("Movie Suggester")
     myWindow := myApp.NewWindow("Movie Suggester")
     newWindow := Window{Window: myWindow, db: db}
     newWindow.SetMainWindow()
